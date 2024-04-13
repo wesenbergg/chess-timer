@@ -2,6 +2,8 @@ import clsx from "clsx";
 
 import Timer from "./Timer";
 import { useGameStore } from "./store";
+import { SettingsDrawer } from "./SettingsDrawer";
+import { PauseIcon, PlayIcon, StopIcon } from "@heroicons/react/16/solid";
 
 function App() {
   const isGamePaused = useGameStore((state) => state.isGamePaused);
@@ -17,34 +19,32 @@ function App() {
           onClick={start}
           disabled={!isGamePaused}
           className={clsx(
-            "px-4 py-2 disabled:bg-slate-50 rounded border border-purple-300 bg-purple-100 text-purple-500 text-sm",
+            "p-2 disabled:bg-neutral-50 rounded-full bg-purple-500 text-sm font-bold",
             {
               "hover:shadow-md hover:-translate-y-1 transform transition duration-200":
                 isGamePaused,
             }
           )}
         >
-          start
+          <PlayIcon className="text-white w-5 h-5" />
         </button>
         <button
           onClick={pause}
           disabled={isGamePaused}
-          className={clsx(
-            "px-4 py-2 disabled:bg-slate-50 rounded border border-purple-300 bg-purple-100 text-purple-500 text-sm",
-            {
-              "hover:shadow-md hover:-translate-y-1 transform transition duration-200":
-                !isGamePaused,
-            }
-          )}
+          className={clsx("p-2 rounded-full bg-purple-500 text-sm", {
+            "hover:shadow-md hover:-translate-y-1 transform transition duration-200":
+              !isGamePaused,
+          })}
         >
-          pause
+          <PauseIcon className="text-white w-5 h-5" />
         </button>
         <button
           onClick={restart}
-          className="px-4 py-2 rounded-md border border-purple-300 bg-purple-100 text-purple-500 text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md"
+          className="p-2 rounded-full bg-purple-500 text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md"
         >
-          restart
+          <StopIcon className="text-white w-5 h-5" />
         </button>
+        <SettingsDrawer />
       </div>
       <Timer index={1} />
     </>

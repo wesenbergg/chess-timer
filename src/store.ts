@@ -16,6 +16,7 @@ type GameState = {
   restart: () => void;
   toggleTurn: () => void;
   tick: (index: number) => void;
+  setTimer: (time: number, handicap: number, player: string) => void;
 };
 
 const initGame = [
@@ -65,6 +66,14 @@ const useGameStore = create<GameState>((set) => ({
         --state.game[index].ttl;
       })
     ),
+  setTimer: (time: number, handicap: number, player: string) => {
+    set((state: GameState) => ({
+      game: state.game.map((p: Player) => ({
+        ...p,
+        ttl: p.name === player ? (time - handicap) * 60 : time * 60,
+      })),
+    }));
+  },
 }));
 
 export { useGameStore };

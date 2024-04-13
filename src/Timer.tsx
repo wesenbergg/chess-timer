@@ -25,10 +25,10 @@ const Timer = ({ index }: { index: number }) => {
         onClick={isActive ? toggleTurn : undefined}
         className={clsx(
           "timer",
-          "w-96 h-96 grid grid-flow-col gap-12 content-evenly mx-auto px-24",
+          "w-72 h-72 grid grid-flow-col gap-12 content-evenly mx-auto px-16",
           "rounded-lg shadow-xl text-white",
           {
-            "bg-purple-700 hover:bg-purple-800 focus:bg-purple-900": isActive,
+            "bg-purple-500 hover:bg-purple-600 focus:bg-purple-700": isActive,
             "bg-purple-300 text-white": !isActive,
           }
         )}
