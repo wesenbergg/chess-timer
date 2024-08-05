@@ -4,12 +4,12 @@ import { Drawer } from "vaul";
 import styles from "./styles";
 import clsx from "clsx";
 import { useGameStore } from "./store";
-import { Cog6ToothIcon } from "@heroicons/react/16/solid";
+import { Cog6ToothIcon, PlusIcon } from "@heroicons/react/16/solid";
 import { Fragment } from "react/jsx-runtime";
 
 const timePreset = [5, 10, 15, 30];
 const players = ["white", "black"];
-const alignments = ["left", "right", "none"];
+const alignments = ["left", "none", "right"];
 
 export function SettingsDrawer() {
   const setTimer = useGameStore((state) => state.setTimer);
@@ -24,9 +24,7 @@ export function SettingsDrawer() {
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
         <Drawer.Content className="bg-neutral-100 p-4 flex flex-col rounded-t-xl h-[90%] mt-24 fixed bottom-0 left-0 right-0">
           <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
-          <Drawer.Title className="font-medium mb-4">
-            Timer settings
-          </Drawer.Title>
+          <Drawer.Title className="font-bold mb-4">Timer settings</Drawer.Title>
           <form
             action={(fd) => {
               const time = fd.get("time") as unknown as number;
@@ -39,7 +37,7 @@ export function SettingsDrawer() {
           >
             <fieldset>
               <legend className="block mb-2">Minutes per player</legend>
-              <div className="inline-flex space-x-2">
+              <div className="inline-flex space-x-2 mb-2">
                 {timePreset.map((time) => (
                   <Fragment key={`time${time}`}>
                     <input
@@ -47,7 +45,8 @@ export function SettingsDrawer() {
                       name="time"
                       id={`time${time}`}
                       value={time}
-                      className="radio-option hidden"
+                      defaultChecked={time === 10}
+                      className="radio-option sr-only"
                     />
                     <label htmlFor={`time${time}`} className={styles.option}>
                       {time}
@@ -55,18 +54,28 @@ export function SettingsDrawer() {
                   </Fragment>
                 ))}
               </div>
+              <details className="transition">
+                <summary className={clsx(styles.textButton, "inline")}>
+                  <PlusIcon className="w-4 mr-1 inline-block text-center transition duration-500" />
+                  Setup timer manually
+                </summary>
+                {/* TODO: Find way to animate details */}
+              </details>
             </fieldset>
             <div>
-              <label htmlFor="handicap" className="block mb-2">
-                Handicap (minutes)
+              <label
+                htmlFor="handicap"
+                className="block mb-2 after:content-['_(minutes)'] after:text-black/40"
+              >
+                Handicap
               </label>
               <input
                 id="handicap"
                 name="handicap"
                 type="number"
-                className="rounded p-2 mb-2 font-mono w-48"
+                className="rounded p-2 mb-2 font-mono w-24 ml-2"
               />
-              <div className="flex justify-between max-w-48">
+              <div className="flex space-x-2">
                 {players.map((player) => (
                   <Fragment key={`player${player}`}>
                     <input
@@ -74,11 +83,12 @@ export function SettingsDrawer() {
                       name="player"
                       id={`player${player}`}
                       value={player}
-                      className="radio-option hidden"
+                      defaultChecked={player === "black"}
+                      className="radio-option sr-only"
                     />
                     <label
                       htmlFor={`player${player}`}
-                      className="font-mono block text-lg p-5 border border-neutral-200 rounded shadow"
+                      className={styles.option}
                     >
                       {player}
                     </label>
@@ -96,7 +106,8 @@ export function SettingsDrawer() {
                       name="align"
                       id={`align${align}`}
                       value={align}
-                      className="radio-option hidden"
+                      defaultChecked={align === "none"}
+                      className="radio-option sr-only"
                     />
                     <label htmlFor={`align${align}`} className={styles.option}>
                       {align}
@@ -113,7 +124,7 @@ export function SettingsDrawer() {
                   "absolute bottom-4 right-0 left-0 mx-2"
                 )}
               >
-                APPLY
+                Apply
               </button>
             </Drawer.Close>
           </form>

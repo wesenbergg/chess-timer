@@ -16,7 +16,7 @@ const Timer = ({ index }: { index: number }) => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [seconds, isActive]);
+  }, [seconds, isActive, tick, index]);
 
   return (
     <>
@@ -24,7 +24,7 @@ const Timer = ({ index }: { index: number }) => {
         aria-disabled={!isActive}
         onClick={isActive ? toggleTurn : undefined}
         className={clsx(
-          "timer",
+          "transition duration-500",
           "w-72 h-72 grid grid-flow-col gap-12 content-evenly mx-auto px-16",
           "rounded-lg shadow-xl text-white",
           {

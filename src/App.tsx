@@ -1,9 +1,8 @@
-import clsx from "clsx";
-
 import Timer from "./Timer";
 import { useGameStore } from "./store";
 import { SettingsDrawer } from "./SettingsDrawer";
 import { PauseIcon, PlayIcon, StopIcon } from "@heroicons/react/16/solid";
+import styles from "./styles";
 
 function App() {
   const isGamePaused = useGameStore((state) => state.isGamePaused);
@@ -16,32 +15,20 @@ function App() {
       <Timer index={0} />
       <div className="flex flex-row justify-center space-x-4">
         <button
-          onClick={start}
           disabled={!isGamePaused}
-          className={clsx(
-            "p-2 disabled:bg-neutral-50 rounded-full bg-purple-500 text-sm font-bold",
-            {
-              "hover:shadow-md hover:-translate-y-1 transform transition duration-200":
-                isGamePaused,
-            }
-          )}
+          onClick={start}
+          className={styles.iconButton}
         >
           <PlayIcon className="text-white w-5 h-5" />
         </button>
         <button
           onClick={pause}
           disabled={isGamePaused}
-          className={clsx("p-2 rounded-full bg-purple-500 text-sm", {
-            "hover:shadow-md hover:-translate-y-1 transform transition duration-200":
-              !isGamePaused,
-          })}
+          className={styles.iconButton}
         >
           <PauseIcon className="text-white w-5 h-5" />
         </button>
-        <button
-          onClick={restart}
-          className="p-2 rounded-full bg-purple-500 text-sm hover:-translate-y-1 transform transition duration-200 hover:shadow-md"
-        >
+        <button onClick={restart} className={styles.iconButton}>
           <StopIcon className="text-white w-5 h-5" />
         </button>
         <SettingsDrawer />

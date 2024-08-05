@@ -20,8 +20,8 @@ type GameState = {
 };
 
 const initGame = [
-  { name: "white", ttl: 123, isActive: false },
-  { name: "black", ttl: 123, isActive: false },
+  { name: "white", ttl: 601, isActive: false },
+  { name: "black", ttl: 601, isActive: false },
 ] as Player[];
 
 const useGameStore = create<GameState>((set) => ({
@@ -48,6 +48,7 @@ const useGameStore = create<GameState>((set) => ({
     set(
       produce((state) => {
         state.game = initGame;
+        state.isGamePaused = true;
         state.turn = 0;
       })
     ),

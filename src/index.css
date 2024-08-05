@@ -16,10 +16,6 @@ body {
   margin: auto;
 }
 
-.timer {
-  transition: background-color 0.3s;
-}
-
 :root .countdown {
   line-height: 1em;
 }
@@ -42,8 +38,27 @@ body {
 }
 
 .radio-option:checked + label {
-  border: 1px black solid;
-  border-color: black;
+  color: black;
+  outline: 1px black solid;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
+
+summary::marker {
+  content: none;
+  --webkit-content: none;
+}
+
+[open] summary svg {
+  transform: rotate(225deg);
+}
+
+#root {
+  background-color: #efedf8;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    filter: invert(95%) hue-rotate(180deg);
+  }
+} */
