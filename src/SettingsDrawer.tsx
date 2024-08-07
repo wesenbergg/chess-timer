@@ -16,7 +16,7 @@ export function SettingsDrawer() {
   return (
     <Drawer.Root shouldScaleBackground>
       <Drawer.Trigger asChild>
-        <button className={styles.iconButton}>
+        <button name="settings" className={styles.iconButton}>
           <Cog6ToothIcon className="text-white w-5 h-5" />
         </button>
       </Drawer.Trigger>

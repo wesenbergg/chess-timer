@@ -15,6 +15,7 @@ function App() {
       <Timer index={0} />
       <div className="flex flex-row justify-center space-x-4">
         <button
+          name="start"
           disabled={!isGamePaused}
           onClick={start}
           className={styles.iconButton}
@@ -22,13 +23,14 @@ function App() {
           <PlayIcon className="text-white w-5 h-5" />
         </button>
         <button
+          name="pause"
           onClick={pause}
           disabled={isGamePaused}
           className={styles.iconButton}
         >
           <PauseIcon className="text-white w-5 h-5" />
         </button>
-        <button onClick={restart} className={styles.iconButton}>
+        <button name="reset" onClick={restart} className={styles.iconButton}>
           <StopIcon className="text-white w-5 h-5" />
         </button>
         <SettingsDrawer />
