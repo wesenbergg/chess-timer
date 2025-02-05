@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { useGameStore } from "./store";
 import { Cog6ToothIcon, PlusIcon } from "@heroicons/react/16/solid";
 import { Fragment } from "react/jsx-runtime";
+import ThemeToggle from "./ThemeSettings";
 
 const timePreset = [5, 10, 15, 30];
 const players = ["white", "black"];
@@ -24,7 +25,9 @@ export function SettingsDrawer() {
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
         <Drawer.Content className="bg-neutral-100 p-4 flex flex-col rounded-t-xl h-[90%] mt-24 fixed bottom-0 left-0 right-0">
           <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
-          <Drawer.Title className="font-bold mb-4">Timer settings</Drawer.Title>
+          <Drawer.Title className="text-2xl font-mono mb-4">
+            Timer settings
+          </Drawer.Title>
           <form
             action={(fd) => {
               const time = fd.get("time") as unknown as number;
@@ -33,10 +36,12 @@ export function SettingsDrawer() {
 
               setTimer(time, handicap, player);
             }}
-            className="space-y-6"
+            className="space-y-12"
           >
             <fieldset>
-              <legend className="block mb-2">Minutes per player</legend>
+              <legend className="block mb-2 font-mono">
+                minutes per player
+              </legend>
               <div className="inline-flex space-x-2 mb-2">
                 {timePreset.map((time) => (
                   <Fragment key={`time${time}`}>
@@ -56,8 +61,8 @@ export function SettingsDrawer() {
               </div>
               <details className="transition">
                 <summary className={clsx(styles.textButton, "inline")}>
-                  <PlusIcon className="w-4 mr-1 inline-block text-center transition duration-500" />
-                  Setup timer manually
+                  <PlusIcon className="w-4 mr-1 inline-block text-center transition duration-500 font-mono" />
+                  setup timer manually
                 </summary>
                 {/* TODO: Find way to animate details */}
               </details>
@@ -65,9 +70,9 @@ export function SettingsDrawer() {
             <div>
               <label
                 htmlFor="handicap"
-                className="block mb-2 after:content-['_(minutes)'] after:text-black/40"
+                className="block mb-2 after:content-['_(minutes)'] after:text-black/40 font-mono"
               >
-                Handicap
+                handicap
               </label>
               <input
                 id="handicap"
@@ -97,7 +102,7 @@ export function SettingsDrawer() {
               </div>
             </div>
             <fieldset>
-              <legend className="block mb-2">Clock alignment</legend>
+              <legend className="block mb-2 font-mono">clock alignment</legend>
               <div className="inline-flex space-x-2">
                 {alignments.map((align) => (
                   <Fragment key={`align${align}`}>
@@ -116,12 +121,18 @@ export function SettingsDrawer() {
                 ))}
               </div>
             </fieldset>
+            <fieldset>
+              <legend className="block mb-2 font-mono">theme</legend>
+              <div className="inline-flex space-x-2">
+                <ThemeToggle />
+              </div>
+            </fieldset>
             <Drawer.Close asChild>
               <button
                 type="submit"
                 className={clsx(
                   styles.button,
-                  "absolute bottom-4 right-0 left-0 mx-2"
+                  "absolute bottom-4 right-0 left-0 mx-2 max-w-96"
                 )}
               >
                 Apply

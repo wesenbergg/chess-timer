@@ -33,16 +33,16 @@ const Timer = ({ index }: { index: number }) => {
           }
         )}
       >
-        <div className="flex flex-col items-center">
-          <span className="countdown font-mono text-5xl">
+        <div className="flex flex-col font-mono items-center">
+          <span className="countdown text-5xl">
             <span
               style={{ "--value": Math.floor(seconds / 60) } as CSSProperties}
             />
           </span>
           min
         </div>
-        <div className="flex flex-col items-center">
-          <span className="countdown font-mono text-5xl">
+        <div className="flex flex-col font-mono items-center">
+          <span className="countdown text-5xl">
             <span style={{ "--value": seconds % 60 } as CSSProperties} />
           </span>
           sec
