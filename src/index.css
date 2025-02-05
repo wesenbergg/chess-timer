@@ -2,23 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
+@layer base {
+  #root {
+    height: 100dvh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    background-color: #efedf8;
+  }
 
-#root {
-  height: 100dvh;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  margin: auto;
+  body {
+    margin: 0;
+  }
+
+  .dark {
+    filter: invert(95%) hue-rotate(180deg);
+    /* --color: #ffe;
+    --background: #090c10;
+    --widgetBackground: #0d1117;
+    --widgetPlaceholder: #515963;
+    --filterBackground: transparent;
+    --highlightBackground: #21262d;
+    --filterText: #f0f2f8;
+    --filterBorder: 2px #30363d solid;
+    --grid-line-color: #ffffff29; */
+  }
+}
+* {
+  transition: filter 600ms;
 }
 
 :root .countdown {
   line-height: 1em;
 }
+
 .countdown {
   display: inline-flex;
   & > * {
@@ -52,13 +73,3 @@ summary::marker {
 [open] summary svg {
   transform: rotate(225deg);
 }
-
-#root {
-  background-color: #efedf8;
-}
-
-/* @media (prefers-color-scheme: dark) {
-  body {
-    filter: invert(95%) hue-rotate(180deg);
-  }
-} */

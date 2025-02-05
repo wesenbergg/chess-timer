@@ -1,0 +1,10 @@
+{
+  "semi": false,
+  "tabWidth": 2,
+  "arrowParens": "avoid",
+  "trailingComma": "all",
+  "endOfLine": "lf",
+  "tailwindConfig": "./tailwind.config.ts",
+  "tailwindFunctions": ["classNames"],
+  "plugins": ["prettier-plugin-tailwindcss"]
+}
