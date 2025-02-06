@@ -36,7 +36,7 @@ export function SettingsDrawer() {
 
               setTimer(time, handicap, player);
             }}
-            className="space-y-12"
+            className="space-y-12 mb-12 pb-8 overflow-scroll"
           >
             <fieldset>
               <legend className="block mb-2 font-mono">
