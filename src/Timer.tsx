@@ -25,7 +25,7 @@ const Timer = ({ index }: { index: number }) => {
         onClick={isActive ? toggleTurn : undefined}
         className={clsx(
           "transition duration-500",
-          "w-72 h-72 grid grid-flow-col gap-12 content-evenly mx-auto px-16",
+          "w-72 h-72 grid grid-flow-col gap-12 content-evenly mx-auto px-16 active:scale-95",
           "rounded-lg shadow-xl text-white",
           {
             "bg-purple-500 hover:bg-purple-600 focus:bg-purple-700": isActive,
