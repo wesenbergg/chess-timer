@@ -1,6 +1,6 @@
 const className = {
   option:
-    "font-mono block text-lg text-black/60 py-4 px-6 border border-neutral-200 rounded shadow active:scale-95 transition hover:bg-white",
+    "font-mono block text-lg text-black/60 py-4 px-6 border border-neutral-200 rounded shadow active:scale-95 transition hover:bg-white/60 active:bg-white/60",
   button:
     "px-4 py-2 rounded-full border outline-offset-2 border-purple-300 bg-purple-500 text-white font-bold text-sm hover:bg-purple-400 active:bg-purple-600 active:scale-x-95 transform transition hover:shadow-md",
   textButton:

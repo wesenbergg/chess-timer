@@ -23,7 +23,7 @@ export function SettingsDrawer() {
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-        <Drawer.Content className="bg-neutral-100 p-4 flex flex-col rounded-t-xl h-[90%] mt-24 fixed bottom-0 left-0 right-0">
+        <Drawer.Content className="bg-neutral-100/60 p-4 flex backdrop-blur-xl flex-col rounded-t-xl h-[90%] mt-24 fixed bottom-0 left-0 right-0">
           <div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300 mb-8" />
           <Drawer.Title className="text-2xl font-mono mb-4">
             Timer settings
@@ -78,7 +78,7 @@ export function SettingsDrawer() {
                 id="handicap"
                 name="handicap"
                 type="number"
-                className="rounded p-2 mb-2 font-mono w-24 ml-2"
+                className="rounded p-2 mb-2 font-mono w-24 ml-2 bg-white/60"
               />
               <div className="flex space-x-2">
                 {players.map((player) => (
@@ -132,10 +132,10 @@ export function SettingsDrawer() {
                 type="submit"
                 className={clsx(
                   styles.button,
-                  "absolute bottom-4 right-0 left-0 mx-2 max-w-96"
+                  "absolute bottom-4 right-0 left-0 mx-2 max-w-96 tracking-wider font-mono"
                 )}
               >
-                Apply
+                apply
               </button>
             </Drawer.Close>
           </form>
